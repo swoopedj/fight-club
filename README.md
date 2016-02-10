@@ -24,3 +24,5 @@ There is a basic test framework in your `test/` folder. To run the tests, simply
 
 ## Credits
 Inspired by the original Node-Catapult developed by mindeavor found at: https://github.com/mindeavor/node-catapult
+
+# fight-club
