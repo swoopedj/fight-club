@@ -9,15 +9,15 @@ angular.module('myApp', [
     $urlRouterProvider.otherwise('/');
     
     $stateProvider
-        .state('home', {
+        .state('signin', {
             url: '/',
-            templateUrl: 'views/main.html',
+            templateUrl: 'views/signin.html',
             controller: 'MainCtrl'
         })
 
-        .state('about', {
-          url: '/about',
-          templateUrl: 'views/about.html',
+        .state('signup', {
+          url: '/signup',
+          templateUrl: 'views/signup.html',
           controller: 'AboutCtrl'
         });
         
