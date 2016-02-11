@@ -1,6 +1,6 @@
 <div id='signin'>
 
-<a href="/" id="mainTitle">U WOT M8</a>
+<a href="/"><img src="http://r76.cooltext.com/rendered/cooltext165046041552577.gif" /></a>
 
 <button type="button" class="mainUser" class="btn btn-default" ng-click="goToSignup()">Sign up</button> 
 
@@ -15,7 +15,7 @@
 
 <ul class="nav navbar-nav navbar-left">
 
-    <li class="navbar-text">You opinion is different so it's wrong</li>
+    <li class="animated fadeInRight navbar-text">Welcome back!</li>
 
 </ul>
 
@@ -34,7 +34,7 @@
   </div>
 </nav>
 
-<div id="signinDiv">
+<div class="animated fadeIn signinDiv">
   <h1>Good to see you {{ user.username }}</h1>
   <form id="signinForm" name="signinForm" ng-submit='signin()'>
     <input type='text'ng-model='user.username' placeholder="Username">
