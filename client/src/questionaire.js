@@ -5,6 +5,6 @@ angular.module('myApp')
     
 // functions
 	$scope.finished = function(){
-		alert('good job')
+		console.log("quesionaire finished")
 	}
   }]);

@@ -1,11 +1,69 @@
 <div id='questionaire'>
-  <h1>Questionaire</h1>
-  <form name="questionForm" ng-submit='finished()'>
+  <a href="/" id="mainTitle">U WOT M8</a>
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">
+        <img alt="Brand" src="https://www.svgimages.com/svg-image/s7/man-hitting-punching-bag-32x32.png">
+      </a>
+    </div>
+
+
+<ul class="nav navbar-nav navbar-left">
+
+    <li class="navbar-text">You opinion is different so it's wrong</li>
+
+</ul>
+
+     <ul class="nav navbar-nav navbar-right">
+
+
+        <li>
+        <input type="text" class="form-control" placeholder="Search another user">
+        </li>
+
+        <li><button type="submit" class="btn btn-default navbar-btn">Submit</button></li>
+
+     </ul>
+
+
+  </div>
+</nav>
+
+
+  <form id="questionaireForm" name="questionForm" ng-submit='finished()'>
+    <h1>Questionaire</h1>
   	<label>are you okay?</label>
-    <input type='text'ng-model='questions.answer1'>
+    <input type='checkbox' ng-model='questions.answer1'>
     <br>
     <label>are you sure?</label>
-    <input type="text" ng-model='questions.answer2'>
+    <input type="checkbox" ng-model='questions.answer2'>
+    <br>
+    <label>are you sure?</label>
+    <input type="checkbox" ng-model='questions.answer3'>
+    <br>
+    <label>are you sure?</label>
+    <input type="checkbox" ng-model='questions.answer4'>
+    <br>
+    <label>are you sure?</label>
+    <input type="checkbox" ng-model='questions.answer5'>
+    <br>
+    <label>are you sure?</label>
+    <input type="checkbox" ng-model='questions.answer6'>
+    <br>
+    <label>are you sure?</label>
+    <input type="checkbox" ng-model='questions.answer7'>
+    <br>
+    <label>are you sure?</label>
+    <input type="checkbox" ng-model='questions.answer8'>
+    <br>
+    <label>are you sure?</label>
+    <input type="checkbox" ng-model='questions.answer9'>
+    <br>
+    <label>are you sure?</label>
+    <input type="checkbox" ng-model='questions.answer10'>
     <br>
     <button>Submit</button>
   </form>

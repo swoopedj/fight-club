@@ -17,10 +17,40 @@ h1{
 .btn:hover{
   background-color: #2380E2;
 }
-
-
+#questionaireForm{
+  text-align: center;
+}
 .jumbotron{
 	background-color: #dcdcdc;
 	text-align: center;
 	border-radius: 2px;
+}
+#main{
+}
+#mainTitle{
+  font-size: 50px;
+  width:100px;
+}
+.navbar-text{
+  font-size: 25px;
+}
+#signupDiv{
+  margin-left: 30%;
+  width: 600px;
+}
+#signinDiv{
+  margin-left: 30%;
+}
+#signinForm{
+  text-align: left;
+}
+#signupForm{
+  text-align: left;
+}
+.mainUser{
+  float: right;
+  margin-top: 25px;
+}
+.form-control{
+  margin-top: 15px;
 }

@@ -5,5 +5,4 @@ angular.module('myApp')
     $scope.profile = {name: "butt"};
 
 // functions
-
   }]);
