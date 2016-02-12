@@ -15,7 +15,6 @@ var cookieParser = require('cookie-parser')
 app.use( cookieParser() );
 
 app.use(function (req, res, next) {
-console.log('in app.use');
   if (req.cookies.sessionId) {
 
     Session.find(req.cookies.sessionId)

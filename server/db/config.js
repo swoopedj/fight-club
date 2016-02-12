@@ -1,7 +1,5 @@
 var db = require('../lib/db');
 
-console.log('DB:',db)
-
 db.schema.createTableIfNotExists('users', function (table) {
   table.increments('id').primary();
   table.string('username', 100);
