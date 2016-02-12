@@ -52,3 +52,8 @@ routes.get('/*', function(req,res){
   res.sendFile( assetFolder + '/index.html')
 // }
 })
+
+
+require('./config/middleware.js')(app, express);
+
+module.exports = app;
