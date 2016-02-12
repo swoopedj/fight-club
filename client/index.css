@@ -2,7 +2,9 @@ h1{
 	color: #2380E2;
 	font-family: sans-serif;
 }
-
+body{
+  background-color: #D1CACA;
+}
 .btn {
   background: #639FDE;
   border-radius: 28px;
@@ -27,18 +29,18 @@ h1{
 }
 #main{
 }
-#mainTitle{
+.mainTitle{
   font-size: 50px;
   width:100px;
 }
 .navbar-text{
   font-size: 25px;
 }
-#signupDiv{
+.signupDiv{
   margin-left: 30%;
   width: 600px;
 }
-#signinDiv{
+.signinDiv{
   margin-left: 30%;
 }
 #signinForm{
@@ -53,4 +55,7 @@ h1{
 }
 .form-control{
   margin-top: 15px;
+}
+.mainContainer{
+  font-size: 20px;
 }

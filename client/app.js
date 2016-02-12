@@ -2,7 +2,8 @@
 
 angular.module('myApp', [
     'ui.router',
-    'myApp.services'
+    'myApp.services',
+    'ngAnimate'
   ])
 
     .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
