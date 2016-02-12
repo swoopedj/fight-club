@@ -37,11 +37,13 @@ body{
   font-size: 25px;
 }
 .signupDiv{
+  margin-top: 175px;
   background-color: white;
   margin-left: 30%;
   width: 600px;
 }
 .signinDiv{
+  margin-top: 175px;
   width: 600px;
   background-color: white;
   margin-left: 30%;
@@ -88,4 +90,10 @@ body{
   margin: 0 auto;
   left: 0px;
   right: 0px;
+}
+#questionaireForm{
+  margin-top: 175px;
+}
+.userProfile{
+  margin-top: 175px;
 }

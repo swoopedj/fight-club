@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('mainCtrl', ['$scope', '$location', 'Test',function($scope, $location, Test) {
+  .controller('mainCtrl', ['$rootScope','$scope', '$location', 'Test',function($rootScope,$scope,$location,Test) {
   	$scope.user = {};
-  	$scope.messages = [
+  	$rootScope.messages = [
   		"Get ready to talk some shit",
   		"You got sources for those opinions?",
   		"Your opinion is different so it's wrong!",
@@ -11,7 +11,7 @@ angular.module('myApp')
   		"Rule #3: Please refer back to rule 1",
   		"Phil eats poop",
   		"Joel eats pee",
-  		"BOOZIN WITH BOOZER",
+  		"BOOZIN WITH	 BOOZER",
   		"test 3",
   		"test 4",
   		"test 5",
@@ -21,23 +21,22 @@ angular.module('myApp')
   		"test 9",
   		"test 10"
   	];
-  	$scope.randoMessage;
+  	$rootScope.randoMessage;
 
 // functions
 	
-	$scope.goToSignin = function(){
+	$rootScope.goToSignin = function(){
 		$location.path('/signin')
 	}
-	$scope.goToSignup = function(){
+	$rootScope.goToSignup = function(){
 		$location.path('/signup')
 	}
-	$scope.searchUser = function(){
-		console.log(Test.searchUser($scope.user));
+	$rootScope.searchUser = function(){
+		console.log(Test.searchUser($rootScope.user));
 	}
-	$scope.random = function(){
-			var rando = Math.round(Math.random() * $scope.messages.length - 1)
-			$scope.randoMessage = $scope.messages[rando];
+	$rootScope.random = function(){
+		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
+		$rootScope.randoMessage = $rootScope.messages[rando];
 	}
-
-	$scope.random();
+	$rootScope.random();
   }]);
