@@ -2,7 +2,7 @@
 
 angular.module('myApp')
   .controller('profileCtrl', ['$scope','$http', function($scope,$http) {
-    $scope.profile = {name: "butt"};
+    $scope.profile = {name: "O'blama"};
 
 // functions
   }]);
