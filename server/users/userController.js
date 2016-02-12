@@ -1,39 +1,56 @@
 var User = require('./userModel.js'),
     Q    = require('q'),
-    jwt  = require('jwt-simple');
+    jwt  = require('jwt-simple'),
+    db = require('../models/user'),
+    Session = require('../models/session')
 
 module.exports = {
   signin: function (req, res, next) {
-    var username = req.body.username,
-        password = req.body.password;
+    // var attrs = {username: req.body.username,
+    //     password: req.body.password};
+    //
+    // var hash = hashPassword(attrs.password);
+    //
+    // var correctPassword = db('users').select('password').where({username: attrs.username});
+    // db.comparePassword(hash, correctPassword);
 
-    var findUser = Q.nbind(User.findOne, User);
-    findUser({username: username})
-      .then(function (user) {
-        if (!user) {
-          next(new Error('User does not exist'));
-        } else {
-          return user.comparePasswords(password)
-            .then(function(foundUser) {
-              if (foundUser) {
-                var token = jwt.encode(user, 'secret');
-                res.json({token: token});
-              } else {
-                return next(new Error('No user'));
-              }
-            });
-        }
-      })
-      .fail(function (error) {
-        next(error);
-      });
+  var username = req.body.username;
+  var password = req.body.password;
+
+  db.findByUsername(username)
+    .then(function (user) {
+      return db.comparePassword(password, user.password)
+        .then(function () {
+          return Session.create(user.id)
+        })
+    })
+    .then(function (newSessionId) {
+      res.setHeader('Set-Cookie', 'sessionId=' + newSessionId);
+      res.redirect('/');
+    })
+    .catch(function (err) {
+      if ( err.message === 'no_such_user' ) {
+        console.log("No such username:", username)
+        res.redirect('/sign-in')
+      }
+      else if ( err.message === 'password_does_not_match' ) {
+        console.log("Incorrect password.")
+        res.redirect('/sign-in');
+      }
+      else {
+        res.status(500).send(err.message);
+      }
+    });
+
+
   },
 
   signup: function (req, res, next) {
-    var username  = req.body.username,
-        password  = req.body.password,
-        create,
-        newUser;
+    var attrs = {username: req.body.username,
+        password: req.body.password};
+
+    db.create(attrs);
+
 
 
   },
@@ -43,23 +60,7 @@ module.exports = {
     // grab the token in the header is any
     // then decode the token, which we end up being the user object
     // check to see if that user exists in the database
-    var token = req.headers['x-access-token'];
-    if (!token) {
-      next(new Error('No token'));
-    } else {
-      var user = jwt.decode(token, 'secret');
-      var findUser = Q.nbind(User.findOne, User);
-      findUser({username: user.username})
-        .then(function (foundUser) {
-          if (foundUser) {
-            res.status(200).send();
-          } else {
-            res.status(401).send();
-          }
-        })
-        .fail(function (error) {
-          next(error);
-        });
-    }
+
   }
+
 };
