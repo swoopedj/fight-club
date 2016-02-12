@@ -50,6 +50,9 @@ angular.module('myApp.services', [])
 	var searchUser = function(x){
 		return x.username;
 	}
+
+
+
 	return {
 		searchUser: searchUser
 	}

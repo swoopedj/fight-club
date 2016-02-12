@@ -37,18 +37,23 @@ body{
   font-size: 25px;
 }
 .signupDiv{
+  margin-top: 175px;
+  background-color: white;
   margin-left: 30%;
   width: 600px;
 }
 .signinDiv{
+  margin-top: 175px;
+  width: 600px;
+  background-color: white;
   margin-left: 30%;
 }
-#signinForm{
+/*#signinForm{
   text-align: left;
 }
 #signupForm{
   text-align: left;
-}
+}*/
 .mainUser{
   float: right;
   margin-top: 25px;
@@ -58,4 +63,37 @@ body{
 }
 .mainContainer{
   font-size: 20px;
+  float: left;
+  margin-top: 175px;
+  width: 850px;
+}
+.mainCol{
+  float: right;
+  font-size: 15px;
+  width: 250px;
+  margin-top: 175px;
+}
+.userInfo{
+  float:left;
+  margin-left: 50px;
+}
+.userDescription{
+  margin-right: 50px;
+  float: right;
+  width: 500px;
+}
+.mainHeader{
+  background-color: #D1CACA;
+  position: fixed;
+  width: 1500px;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0px;
+  right: 0px;
+}
+#questionaireForm{
+  margin-top: 175px;
+}
+.userProfile{
+  margin-top: 175px;
 }
