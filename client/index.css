@@ -1,5 +1,4 @@
 h1{
-	color: #2380E2;
 	font-family: sans-serif;
 }
 body{
@@ -35,12 +34,37 @@ body{
 }
 .navbar-text{
   font-size: 25px;
+  margin-left: 30%;
+}
+.glyphicon{
+  font-size: 50px;
+}
+#signinHeader{
+  margin-top: 15px;
+  margin-right: 15px;
+}
+#signupLeft{
+  margin-left: 100px;
+  font-size: 25px;
+  float: left;
+  width: 700px;
+  margin-top: 100px;
+}
+#signupLeft span{
+  padding: 10px 10px;
+}
+#signupLeft h1{
+  color: #820000;
+}
+#signupLeftCont{
+  text-align: left;
 }
 .signupDiv{
-  margin-top: 175px;
-  background-color: white;
-  margin-left: 30%;
-  width: 600px;
+  text-align: left;
+  margin-top: 100px;
+  float: right;
+  width:750px;
+  padding-bottom: 25px;
 }
 .signinDiv{
   margin-top: 175px;
@@ -54,6 +78,14 @@ body{
 #signupForm{
   text-align: left;
 }*/
+#signupForm input{
+  margin: 5px 5px 5px 5px;
+  height: 35px;
+  width: 200px;
+}
+#signupEmail{
+  width: 300px;
+}
 .mainUser{
   float: right;
   margin-top: 25px;
@@ -61,17 +93,26 @@ body{
 .form-control{
   margin-top: 15px;
 }
+.container{
+  width: 1600px;
+}
 .mainContainer{
   font-size: 20px;
   float: left;
-  margin-top: 175px;
+  margin-top: 100px;
   width: 850px;
 }
 .mainCol{
   float: right;
   font-size: 15px;
   width: 250px;
-  margin-top: 175px;
+  margin-top: 100px;
+}
+#headerTitle{
+  font-family: mkmyth;
+  font-size: 50px;
+  color: #820000;
+  text-shadow: 2px 2px white;
 }
 .userInfo{
   float:left;
@@ -85,7 +126,7 @@ body{
 .mainHeader{
   background-color: #D1CACA;
   position: fixed;
-  width: 1500px;
+  width: 100%;
   z-index: 999;
   margin: 0 auto;
   left: 0px;
@@ -96,4 +137,8 @@ body{
 }
 .userProfile{
   margin-top: 175px;
+}
+@font-face{
+  font-family: mkmyth;
+  src: url(/images/mortal_kombat/mkmyth.ttf);
 }
