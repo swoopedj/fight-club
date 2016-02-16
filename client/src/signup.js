@@ -26,7 +26,6 @@ angular.module('myApp')
   	$scope.signup = function(){
 	    Auth.signup($scope.user)
 	      .then(function (token) {
-	        $window.localStorage.setItem('com.shortly', token);
 	        $location.path('/questionaire');
 	      })
 	      .catch(function (error) {
