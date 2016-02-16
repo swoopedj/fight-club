@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('signinCtrl', ['$rootScope','$scope', '$location', 'Auth',function($rootScope,$scope, $location, Auth) {
+  .controller('signinCtrl', ['$rootScope','$scope', '$location', 'Auth', '$window',function($rootScope,$scope, $location, Auth,$window) {
   	$scope.user = {};
   	$rootScope.messages = [
   		"Get ready to talk some shit",
@@ -27,9 +27,9 @@ angular.module('myApp')
   		console.log("sign in")
 	    Auth.signin($scope.user)
 	      .then(function (token) {
-	        $window.localStorage.setItem('com.shortly', token);
+
 	        $location.path('/profile');
-	        console.log($window.localStorage)
+
 	      })
 	      .catch(function (error) {
 	        alert("WRONG")
