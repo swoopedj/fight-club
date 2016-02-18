@@ -14,35 +14,40 @@
 
 <div class="mainHeader">
 <!-- <a href="/" class="mainTitle">Fight Club</a> -->
-<a href="/"><img src="./images/debate-club.gif" /></a>
+<!-- <a href="/"><img src="./images/debate-club.gif" /></a> -->
 
-<button type="button" class="mainUser" class="btn btn-default" ng-click="goToSignup()">Sign up</button> 
-<button type="button" class="mainUser" class="btn btn-default" ng-click="goToSignin()">Sign in</button> 
-
-
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="animated fadeIn navbar-brand" href="#" ng-click="random()">
-        <img alt="Brand" src="https://www.svgimages.com/svg-image/s7/man-hitting-punching-bag-32x32.png">
+        <img height="50" width="50" alt="Brand" src="/images/doom-skull.gif">
       </a>
     </div>
 
 <ul class="nav navbar-nav navbar-left">
 
-    <li class="animated flipInX navbar-text">{{ randoMessage }}</li>
+  <li id="headerTitle">
+    Slandr
+  </li>
+
+  <li>
+    <div class="animated flipInX navbar-text">{{ randoMessage }}</div>
+  </li>
 
 </ul>
 
      <ul class="nav navbar-nav navbar-right">
 
-
-      <form ng-submit='searchUser()'>
-          <input type="text" ng-model='user.username' placeholder="Search another user">
-          <button type="submit" class="btn btn-default navbar-btn">Submit</button>
+      <li>
+      <!-- <button type="button" class="mainUser" class="btn btn-default" ng-click="goToSignin()">Sign in</button>  -->
+      <form id="signinHeader" ng-if="checkLogin()" ng-submit="signin()">
+        <input type="text" ng-model="user.username" placeholder="Username"/>
+        <input type="password" ng-model="user.password" placeholder="Password"/>
+        <button>Sign In</button>
+        <!-- <br> -->
+        <!-- <input type="checkbox">Save Info?</input> -->
       </form>
-
-
+    </li>
 
      </ul>
 
@@ -50,7 +55,6 @@
   </div>
 </nav>
 </div>
-
 
     <div class="container">
       <!-- create a app name, on click goes to main page -->
@@ -71,8 +75,6 @@
     <script src="./lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="services/services.js"></script>
     <script src="app.js"></script>
-    <script src="src/signin.js"></script>
-    <script src="src/main.js"></script>
     <script src="src/signup.js"></script>
     <script src="src/questionaire.js"></script>
     <script src="src/profile.js"></script>

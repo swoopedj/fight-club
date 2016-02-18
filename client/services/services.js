@@ -73,6 +73,7 @@ angular.module('myApp.services', [])
       data: user
     })
     .then(function (resp) {
+      console.log('signin token', resp.data.token)
       return resp.data.token;
     });
   };
@@ -91,12 +92,12 @@ angular.module('myApp.services', [])
 
   var isAuth = function () {
     console.log("isAuth in Auth")
-    return true;
+    return false;
+    // this is where I will check for session token
   };
 
   var signout = function () {
-    //$window.localStorage.removeItem('com.shortly');
-    $location.path('/signin');
+    $location.path('/');
     
   };
 
