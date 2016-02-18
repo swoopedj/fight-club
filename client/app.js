@@ -14,8 +14,8 @@ angular.module('myApp', [
 
         .state('main', {
           url: '/',
-          templateUrl: 'views/signup.html',
-          controller: 'signupCtrl'
+          templateUrl: 'views/main.html',
+          controller: 'mainCtrl'
         })
 
         .state('signin', {

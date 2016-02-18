@@ -23,13 +23,6 @@ angular.module('myApp')
   	];
   	$rootScope.randoMessage;
 // functions
-    $scope.confirmPass = function(){
-      if($scope.user.password === $scope.user.password2){
-        return true;
-      }else{
-        return false;
-      }
-    }
   	$scope.signup = function(){
 	    Auth.signup($scope.user)
 	      .then(function (token) {

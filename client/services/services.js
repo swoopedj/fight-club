@@ -91,13 +91,13 @@ angular.module('myApp.services', [])
 
   var isAuth = function () {
     console.log("isAuth in Auth")
-    return !!$window.localStorage.getItem('com.shortly');
+    return true;
   };
 
   var signout = function () {
-    $window.localStorage.removeItem('com.shortly');
+    //$window.localStorage.removeItem('com.shortly');
     $location.path('/signin');
-    console.log("signout called", $window.localStorage)
+    
   };
 
 
