@@ -2,17 +2,29 @@ var User = require('./userModel.js'),
     Q    = require('q'),
     jwt  = require('jwt-simple'),
     db = require('../models/user'),
-    Session = require('../models/session')
+    Session = require('../models/session'),
+    bcrypt = require('bcrypt-nodejs'),
+    data = require('../lib/db');
 
 module.exports = {
   signin: function (req, res, next) {
-    // var attrs = {username: req.body.username,
-    //     password: req.body.password};
-    //
-    // var hash = hashPassword(attrs.password);
-    //
-    // var correctPassword = db('users').select('password').where({username: attrs.username});
-    // db.comparePassword(hash, correctPassword);
+    var attrs = {username: req.body.username,
+        password: req.body.password};
+
+    var hash = hashPassword(attrs.password).then(function(data){
+      return data;
+    })
+    .catch(function(err){
+      if(err){
+        console.log('ERRORRRRR:', err);
+      }
+    });
+
+    console.log('HASHHHHH:', hash);
+
+
+    var correctPassword = data('users').select('password').where({username: attrs.username});
+    db.comparePassword(hash, correctPassword);
 
   var username = req.body.username;
   var password = req.body.password;
@@ -63,4 +75,13 @@ module.exports = {
 
   }
 
+};
+
+var hashPassword = function(password) {
+  return new Promise(function (resolve, reject) {
+    bcrypt.hash(password, null, null, function (err, hashResult) {
+      if (err) reject(err);
+      else     resolve(hashResult);
+    });
+  });
 };
