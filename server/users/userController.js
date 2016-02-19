@@ -3,57 +3,26 @@ var User = require('./userModel.js'),
     jwt  = require('jwt-simple'),
     db = require('../models/user'),
     Session = require('../models/session'),
-    bcrypt = require('bcrypt-nodejs'),
-    data = require('../lib/db');
+    data = require('../lib/db')
+
 
 module.exports = {
   signin: function (req, res, next) {
     var attrs = {username: req.body.username,
         password: req.body.password};
 
-    var hash = hashPassword(attrs.password).then(function(data){
-      return data;
-    })
-    .catch(function(err){
-      if(err){
-        console.log('ERRORRRRR:', err);
-      }
-    });
-
-    console.log('HASHHHHH:', hash);
-
-
-    var correctPassword = data('users').select('password').where({username: attrs.username});
-    db.comparePassword(hash, correctPassword);
-
-  var username = req.body.username;
-  var password = req.body.password;
-
-  db.findByUsername(username)
-    .then(function (user) {
-      return db.comparePassword(password, user.password)
-        .then(function () {
-          return Session.create(user.id)
+        db.findByUsername(attrs.username)
+        .then(function(pw){
+          if (attrs.password === pw.password){
+            res.redirect('/')
+          }
+          else{
+            console.log("wrong password")
+          }
         })
-    })
-    .then(function (newSessionId) {
-      res.setHeader('Set-Cookie', 'sessionId=' + newSessionId);
-      res.redirect('/');
-    })
-    .catch(function (err) {
-      if ( err.message === 'no_such_user' ) {
-        console.log("No such username:", username)
-        res.redirect('/sign-in')
-      }
-      else if ( err.message === 'password_does_not_match' ) {
-        console.log("Incorrect password.")
-        res.redirect('/sign-in');
-      }
-      else {
-        res.status(500).send(err.message);
-      }
-    });
-
+        .catch(function(err) {
+          console.log(err)
+        })
 
   },
 
