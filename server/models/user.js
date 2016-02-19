@@ -11,14 +11,24 @@ User.findByUsername = function (username) {
     });
 };
 
+User.signIn = function (attrs) {
+
+  User.findByUsername(attrs.username)
+  .then(function(pw){
+    return (attrs.password === pw.password);
+  })
+  .catch(function(err) {
+    console.log(err)
+  })
+
+
+}
+
 User.create = function (attrs) {
 
   // Hash password before inserting into database.
   // This also returns a promise that resolves when both tasks are done.
-  return hashPassword(attrs.password)
-    .then(function (passwordHash) {
-      return db('users').insert({ username: attrs.username, password: passwordHash });
-    })
+      return db('users').insert({ username: attrs.username, password: attrs.password })
     .then(function (result) {
       var newId = result[0];
       // Return full user object (without password)
@@ -37,13 +47,13 @@ User.create = function (attrs) {
 
 };
 
-User.comparePassword = comparePassword;
+//User.comparePassword = comparePassword;
 
 //
 // These helpers each use a non-promise callback function,
 // but then wraps it in a new promise (and returns that promise).
 //
-function hashPassword (password) {
+User.hashPassword = function(password) {
   return new Promise(function (resolve, reject) {
     bcrypt.hash(password, null, null, function (err, hashResult) {
       if (err) reject(err);
@@ -52,7 +62,7 @@ function hashPassword (password) {
   });
 };
 
-function comparePassword (attemptedPassword, actualPassword) {
+User.comparePassword = function(attemptedPassword, actualPassword) {
   return new Promise(function (resolve, reject) {
     bcrypt.compare(attemptedPassword, actualPassword, function(err, isMatch) {
       if (err)                     reject(err);
