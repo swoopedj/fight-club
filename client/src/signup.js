@@ -23,6 +23,7 @@ angular.module('myApp')
   	$rootScope.randoMessage;
 // functions
   	$scope.signup = function(){
+      // $rootScope.user.username = $scope.user.username;
 	    Auth.signup($scope.user)
 	      .then(function (token) {
           console.log("tok it", token)
@@ -32,7 +33,6 @@ angular.module('myApp')
             })
             .then(function(){
               $location.path('/questionaire');
-              console.log('MYCOOKIE:', $cookies);
             })
 	      })
 	      .catch(function (error) {

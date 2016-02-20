@@ -179,6 +179,29 @@ body{
 .userProfile{
   margin-top: 175px;
 }
+
+.chat-message{
+  width: 100%;
+}
+
+.chat-container{
+  margin-top: 175px;
+
+}
+
+.chat-window{
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 10px;
+  height: 400px;
+  width: 40%;
+  box-shadow: 10px 10px 5px #888888;
+  overflow: scroll;
+}
+
+.pull-left{
+  text-align: left;
+}
 @font-face{
   font-family: mkmyth;
   src: url(/images/mortal_kombat/mkmyth.ttf);
