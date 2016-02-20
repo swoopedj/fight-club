@@ -5,8 +5,10 @@ var User = require('./userModel.js'),
     Session = require('../models/session'),
     data = require('../lib/db')
 
+
 module.exports = {
   signin: function (req, res, next) {
+
     // var attrs = {username: req.body.username,
     //     password: req.body.password};
     //

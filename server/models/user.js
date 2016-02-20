@@ -27,6 +27,7 @@ User.create = function (attrs) {
   console.log('test=====================')
   // Hash password before inserting into database.
   // This also returns a promise that resolves when both tasks are done.
+
   return User.hashPassword(attrs.password)
     .then(function (passwordHash) {
       console.log("user.create attrs", attrs)
@@ -52,6 +53,7 @@ User.create = function (attrs) {
 };
 
 //User.comparePassword = comparePassword;
+
 
 //
 // These helpers each use a non-promise callback function,
