@@ -14,23 +14,20 @@ User.findByUsername = function (username) {
 };
 
 User.signIn = function (attrs) {
-
   User.findByUsername(attrs.username)
   .then(function(pw){
     return (attrs.password === pw.password);
   })
   .catch(function(err) {
     console.log(err)
-  })
-
-
+  });
 }
 
 User.create = function (attrs) {
 
   // Hash password before inserting into database.
   // This also returns a promise that resolves when both tasks are done.
-  return hashPassword(attrs.password)
+  return User.hashPassword(attrs.password)
     .then(function (passwordHash) {
       console.log("user.create attrs", attrs)
       return db('users').insert({ username: attrs.username, password: passwordHash , firstname: attrs.firstname, lastname: attrs.lastname, email: attrs.email});
