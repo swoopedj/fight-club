@@ -4,6 +4,7 @@ var db = require('../lib/db');
 var Session = module.exports;
 
 Session.find = function (sessionId) {
+  console.log('====== sessionId ===== :', sessionId);
 
   return db('sessions').select('*').where({ id: sessionId }).limit(1)
     .then(function (rows) {

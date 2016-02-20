@@ -14,7 +14,9 @@ module.exports = {
         db.findByUsername(attrs.username)
         .then(function(pw){
           if (attrs.password === pw.password){
-            res.redirect('/')
+
+            res.redirect('/');
+
           }
           else{
             console.log("wrong password")

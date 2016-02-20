@@ -13,6 +13,7 @@ module.exports = {
         if (!user) {
           next(new Error('User does not exist'));
         } else {
+          console.log("CONTROLLER IN USER======")
           return user.comparePasswords(password)
             .then(function(foundUser) {
               if (foundUser) {
