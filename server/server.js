@@ -5,7 +5,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 ////
-require('./db/config');
 var User = require('./models/user');
 var Session = require('./models/session');
 
