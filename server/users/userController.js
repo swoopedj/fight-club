@@ -7,24 +7,6 @@ var User = require('./userModel.js'),
 
 module.exports = {
   signin: function (req, res, next) {
-<<<<<<< HEAD
-    var attrs = {username: req.body.username,
-        password: req.body.password};
-
-        db.findByUsername(attrs.username)
-        .then(function(pw){
-          if (attrs.password === pw.password){
-            res.redirect('/')
-          }
-          else{
-            console.log("wrong password")
-          }
-        })
-        .catch(function(err) {
-          console.log(err)
-        })
-
-=======
     // var attrs = {username: req.body.username,
     //     password: req.body.password};
     //
@@ -59,7 +41,6 @@ module.exports = {
           res.status(500).send(err.message);
         }
       });
->>>>>>> e248964e26455df2f1619d81933d43cdfcf5909a
   },
 
   signup: function (req, res, next) {
