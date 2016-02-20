@@ -4,7 +4,8 @@ angular.module('myApp', [
     'ui.router',
     'myApp.services',
     'ngAnimate',
-    'ngCookies'
+    'ngCookies',
+    'luegg.directives'
   ])
 
     .config(function($stateProvider, $urlRouterProvider, $httpProvider) {

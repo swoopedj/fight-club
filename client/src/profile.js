@@ -31,6 +31,7 @@ angular.module('myApp')
   }
   $rootScope.signout = function(){
     $cookies.remove('myCookie')
+    $cookies.remove('myUsername')
     $location.path('/')
   }
   $scope.checkLogin = function(){

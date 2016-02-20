@@ -193,8 +193,8 @@ body{
   background-color: white;
   border: 3px solid black;
   border-radius: 10px;
-  height: 400px;
-  width: 40%;
+  height: 350px;
+  width: 50%;
   box-shadow: 10px 10px 5px #888888;
   overflow: scroll;
 }

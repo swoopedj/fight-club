@@ -1,10 +1,11 @@
 <div id="chatroom">
+<script src="angularjs-scroll-glue-master/src/scrollglue.js"></script>
 <center>
   <h1 class="chatroom-name"> You know what your problem is? </h1>
   <div class="chat-container" ng-controller="chatCtrl as chatroom">
 
-    <div class="chat-window">
-      <p class="chat-message pull-left" ng-repeat="chat in chatroom.chats">{{chat.user}}User: {{chat.message}}</p><br>
+    <div class="chat-window" scroll-glue>
+      <p class="chat-message pull-left" ng-repeat="chat in chatroom.chats">{{chat.user}}: {{chat.message}}</p>
     </div>
     <br>
     <div class="chat-form">
