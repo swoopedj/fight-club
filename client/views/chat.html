@@ -1,0 +1,24 @@
+<div id="chatroom">
+<center>
+  <h1 class="chatroom-name"> You know what your problem is? </h1>
+  <div class="chat-container" ng-controller="ChatController as chatroom">
+
+    <div class="chat-window" scroll-glue>
+      <p class="pull-left" ng-repeat="chat in chatroom.chats">{{chat.user}}Username: {{chat.message}}</p>
+    </div>
+
+    <div class="chat-form">
+      <form name="chatForm" ng-submit="chatForm.$valid && chatroom.postChat(chatroom.message)" novalidate>
+
+        <textarea cols="45" ng-model="chatroom.message" placeholder="Trolling . . ." ng-click="chatroom.message = null" required></textarea>
+        <input id="submit-chat" value="Slandr" type="submit">
+        <div> The chat text is {{chatForm.$valid}}</div>
+      </form>
+    </div>
+
+
+  </div>
+  
+
+  </center>
+</div>
