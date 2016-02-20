@@ -24,13 +24,13 @@ User.signIn = function (attrs) {
 }
 
 User.create = function (attrs) {
-
+  console.log('test=====================')
   // Hash password before inserting into database.
   // This also returns a promise that resolves when both tasks are done.
   return User.hashPassword(attrs.password)
     .then(function (passwordHash) {
       console.log("user.create attrs", attrs)
-      return db('users').insert({ username: attrs.username, password: passwordHash , firstname: attrs.firstname, lastname: attrs.lastname, email: attrs.email});
+      return db('users').insert({ email: attrs.email ,  firstname: attrs.firstname, lastname: attrs.lastname, password: passwordHash , username: attrs.username});
     })
     .then(function (result) {
       var newId = result[0];
