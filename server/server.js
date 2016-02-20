@@ -15,18 +15,9 @@ var cookieParser = require('cookie-parser')
 app.use( cookieParser() );
 
 app.use(function (req, res, next) {
-  if (req.cookies.sessionId) {
 
-    Session.find(req.cookies.sessionId)
-      .then(function(session) {
-        req.session = session;
-        next();
-      });
-  }
-  else {
-    // No session to fetch; just continue down the pipeline.
     next();
-  }
+
 })
 
 app.use(bodyParser.json());

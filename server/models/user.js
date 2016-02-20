@@ -7,6 +7,8 @@ var User = module.exports;
 User.findByUsername = function (username) {
   return db('users').select('*').where({ username: username }).limit(1)
     .then(function(rows) {
+      console.log("findByUsername rows", rows)
+      // returning row object of id, username, hashedpass, etc
       return rows[0] || Promise.reject( new Error('no_such_user') )
     });
 };
@@ -17,10 +19,12 @@ User.create = function (attrs) {
   // This also returns a promise that resolves when both tasks are done.
   return hashPassword(attrs.password)
     .then(function (passwordHash) {
-      return db('users').insert({ username: attrs.username, password: passwordHash });
+      console.log("user.create attrs", attrs)
+      return db('users').insert({ username: attrs.username, password: passwordHash , firstname: attrs.firstname, lastname: attrs.lastname, email: attrs.email});
     })
     .then(function (result) {
       var newId = result[0];
+      console.log("reached user create", result)
       // Return full user object (without password)
       return { id: newId, username: attrs.username }
     })
@@ -55,6 +59,7 @@ function hashPassword (password) {
 function comparePassword (attemptedPassword, actualPassword) {
   return new Promise(function (resolve, reject) {
     bcrypt.compare(attemptedPassword, actualPassword, function(err, isMatch) {
+      console.log("reached comparePassword ", isMatch, err)
       if (err)                     reject(err);
       else if (isMatch === false)  reject(new Error('password_does_not_match'))
       else                         resolve();

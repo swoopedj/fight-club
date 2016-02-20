@@ -1,7 +1,5 @@
-'use strict';
-
 angular.module('myApp')
-  .controller('signupCtrl', ['$rootScope','$scope','$http', '$location', 'Auth',function($rootScope,$scope,$http,$location,Auth) {
+  .controller('signupCtrl', ['$cookies','$rootScope','$scope','$http', '$location', 'Auth',function($cookies,$rootScope,$scope,$http,$location,Auth) {
   	$scope.user = {};
     $rootScope.user = {};
   	$rootScope.messages = [
@@ -27,27 +25,41 @@ angular.module('myApp')
   	$scope.signup = function(){
 	    Auth.signup($scope.user)
 	      .then(function (token) {
-	        $location.path('/questionaire');
+          console.log("tok it", token)
+          Auth.signin($scope.user)
+            .then(function(res){
+              $cookies.put('myCookie', res)
+            })
+            .then(function(){
+              $location.path('/questionaire');
+            })
 	      })
 	      .catch(function (error) {
-	        alert("NO")
-	        console.error(error);
+	        console.error("scope signup error", error);
 	      });
   	}
   $rootScope.signin = function(){
-    console.log("signed in", $rootScope.user)
+    Auth.signin($rootScope.user)
+      .then(function(res){
+        console.log("res", res)
+        $cookies.put('myCookie', res)
+        $location.path('/profile')
+      })
+      .catch(function(err){
+        console.log("err", err)
+      })
   }
   $rootScope.checkLogin = function(){
-    if(Auth.isAuth()){
-      // if they DO have a session token redirect to profile
+    if($cookies.get("myCookie")){
       $location.path('/profile')
+    }else{
+      return false;
     }
-    return true;
   }
 	$rootScope.random = function(){
 		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
 		$rootScope.randoMessage = $rootScope.messages[rando];
 	}
-
 	$rootScope.random();
+  $rootScope.checkLogin();
   }]);

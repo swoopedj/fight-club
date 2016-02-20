@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('questionCtrl', ['$rootScope','$scope','$http', function($rootScope,$scope,$http) {
+  .controller('questionCtrl', ['$cookies', '$location','$rootScope','$scope','$http', function($cookies,$location,$rootScope,$scope,$http) {
+    $scope.questions = {};
   	$rootScope.messages = [
       "The supreme art of war is to subdue the enemy without fighting",
       "70% of statistics don't need sources",
@@ -23,11 +24,21 @@ angular.module('myApp')
   	$rootScope.randoMessage;
 // functions
 	$scope.finished = function(){
-		console.log("quesionaire finished")
+    // answers are true if checked
+    console.log("questionaire", $scope.questions)
 	}
 	$rootScope.random = function(){
 		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
 		$rootScope.randoMessage = $rootScope.messages[rando];
 	}
+  $rootScope.checkLogin = function(){
+    console.log("questionaire checkLogin", $cookies.get('myCookie'))
+    if($cookies.get('myCookie')){
+      return false;
+    }else{
+      $location.path('/')
+    }
+  }
 	$rootScope.random();
+  $rootScope.checkLogin();
   }]);

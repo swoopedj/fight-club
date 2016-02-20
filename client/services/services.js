@@ -73,39 +73,39 @@ angular.module('myApp.services', [])
       data: user
     })
     .then(function (resp) {
-      console.log('signin token', resp.data.token)
-      return resp.data.token;
-    });
+      // console.log('signin token', resp)
+      return resp.data.session;
+    })
+    .catch(function(err){
+      console.log("signin error", err)
+      throw new Error(err.data)
+    })
   };
 
   var signup = function (user) {
-  	console.log("signed up user: ", user)
     return $http({
       method: 'POST',
       url: '/api/users/signup',
       data: user
     })
     .then(function (resp) {
-      return resp.data.token;
-    });
+      console.log("reached signup resp", resp)
+      return resp.data;
+    })
+    .catch(function(err){
+      console.log("servies signup error", err)
+      throw new Error(err.data)
+    })
   };
 
   var isAuth = function () {
-    console.log("isAuth in Auth")
-    return false;
     // this is where I will check for session token
+    return true;
   };
-
-  var signout = function () {
-    $location.path('/');
-    
-  };
-
 
   return {
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout
   };
 });

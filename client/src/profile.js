@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('profileCtrl', ['$rootScope','$scope','$http', '$location', 'Auth', function($rootScope,$scope,$http,$location,Auth) {
-    $scope.profile = {name: "O'blama"};
+  .controller('profileCtrl', ['$cookies','$rootScope','$scope','$http', '$location', 'Auth', function($cookies,$rootScope,$scope,$http,$location,Auth) {
+    $scope.profile = {};
   	$rootScope.messages = [
   		"The supreme art of war is to subdue the enemy without fighting",
   		"70% of statistics don't need sources",
@@ -26,9 +26,18 @@ angular.module('myApp')
 		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
 		$rootScope.randoMessage = $rootScope.messages[rando];
 	}
+  $scope.userInfo = function(){
+
+  }
+  $rootScope.signout = function(){
+    $cookies.remove('myCookie')
+    $location.path('/')
+  }
   $scope.checkLogin = function(){
     // check if they are logged in, if not redirect to main page
-    if(!Auth.isAuth()){
+    if($cookies.get('myCookie')){
+      return false;
+    }else{
       $location.path('/')
     }
   }
