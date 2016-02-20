@@ -32,6 +32,7 @@ angular.module('myApp')
             })
             .then(function(){
               $location.path('/questionaire');
+              console.log('MYCOOKIE:', $cookies);
             })
 	      })
 	      .catch(function (error) {
