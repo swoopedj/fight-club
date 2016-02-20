@@ -3,7 +3,8 @@
 angular.module('myApp', [
     'ui.router',
     'myApp.services',
-    'ngAnimate'
+    'ngAnimate',
+    'ngCookies'
   ])
 
     .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
@@ -14,18 +15,6 @@ angular.module('myApp', [
 
         .state('main', {
           url: '/',
-          templateUrl: 'views/main.html',
-          controller: 'mainCtrl'
-        })
-
-        .state('signin', {
-            url: '/signin',
-            templateUrl: 'views/signin.html',
-            controller: 'signinCtrl'
-        })
-
-        .state('signup', {
-          url: '/signup',
           templateUrl: 'views/signup.html',
           controller: 'signupCtrl'
         })
@@ -70,7 +59,7 @@ angular.module('myApp', [
   // if it's not valid, we then redirect back to signin/signup
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      $location.path('/signin');
+      $location.path('/signup');
     }
   });
 });

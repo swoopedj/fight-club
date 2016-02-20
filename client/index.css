@@ -1,6 +1,5 @@
 h1{
-	color: #2380E2;
-	font-family: sans-serif;
+  font-family: sans-serif;
 }
 body{
   background-color: #D1CACA;
@@ -15,17 +14,39 @@ body{
   text-decoration: none;
   text-align: center;
 }
-
+#questionaireForm label{
+  font-size: 20px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+#questionaireForm input{
+  float: right;
+  height: 25px;
+  width: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+#questionaireForm button{
+  height: 50px;
+  width: 100px;
+  margin-top: 25px;
+}
 .btn:hover{
   background-color: #2380E2;
 }
+.questionaire{
+  background-color: white;
+  padding: 50px 50px 50px 50px;
+  width: 90%;
+  margin: 10% auto;
+}
 #questionaireForm{
-  text-align: center;
+  text-align: left;
 }
 .jumbotron{
-	background-color: #dcdcdc;
-	text-align: center;
-	border-radius: 2px;
+  background-color: #dcdcdc;
+  text-align: center;
+  border-radius: 2px;
 }
 #main{
 }
@@ -34,13 +55,45 @@ body{
   width:100px;
 }
 .navbar-text{
+  font-size: 20px;
+  width: 900px;
+  height: 50px;
+  margin-left: 5%;
+}
+.glyphicon{
+  font-size: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#signinHeader{
+  margin-top: 15px;
+  margin-right: 15px;
+}
+#signupLeft{
+  margin-left: 8%;
   font-size: 25px;
+  float: left;
+  width: 45%;
+  margin-top: 10%;
+}
+#signupLeft span{
+  padding: 10px 10px;
+}
+#signupLeft h1{
+  color: #820000;
+}
+#signupLeftCont{
+  text-align: left;
 }
 .signupDiv{
-  margin-top: 175px;
-  background-color: white;
-  margin-left: 30%;
-  width: 600px;
+  text-align: left;
+  margin-top: 10%;
+  float: right;
+  width:45%;
+  padding-bottom: 25px;
+}
+.signupDiv h1{
+  color: #820000;
 }
 .signinDiv{
   margin-top: 175px;
@@ -54,6 +107,29 @@ body{
 #signupForm{
   text-align: left;
 }*/
+.navbar-brand{
+  margin-top: -5px;
+}
+.navbar-right{
+  width: 400px;
+}
+#signupButton{
+  margin-left: 5px;
+  margin-top: 5px;
+  height: 35px;
+  width: 85px;
+  border-radius: 5px;
+  background-color: #00D300;
+}
+#signupForm input{
+  margin: 10px 5px 10px 5px;
+  height: 35px;
+  width: 200px;
+  border-radius: 5px;
+}
+#signupEmail{
+  width: 300px;
+}
 .mainUser{
   float: right;
   margin-top: 25px;
@@ -61,17 +137,26 @@ body{
 .form-control{
   margin-top: 15px;
 }
+.container{
+  width: 90%;
+}
 .mainContainer{
   font-size: 20px;
   float: left;
-  margin-top: 175px;
+  margin-top: 100px;
   width: 850px;
 }
 .mainCol{
   float: right;
   font-size: 15px;
   width: 250px;
-  margin-top: 175px;
+  margin-top: 100px;
+}
+#headerTitle{
+  font-family: mkmyth;
+  font-size: 50px;
+  color: #820000;
+  text-shadow: 2px 2px white;
 }
 .userInfo{
   float:left;
@@ -85,15 +170,16 @@ body{
 .mainHeader{
   background-color: #D1CACA;
   position: fixed;
-  width: 1500px;
+  width: 100%;
   z-index: 999;
   margin: 0 auto;
   left: 0px;
   right: 0px;
 }
-#questionaireForm{
-  margin-top: 175px;
-}
 .userProfile{
   margin-top: 175px;
+}
+@font-face{
+  font-family: mkmyth;
+  src: url(/images/mortal_kombat/mkmyth.ttf);
 }

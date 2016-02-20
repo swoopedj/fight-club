@@ -4,6 +4,9 @@ db.schema.createTableIfNotExists('users', function (table) {
   table.increments('id').primary();
   table.string('username', 100);
   table.string('password', 100);
+  table.string('firstname', 100);
+  table.string('lastname', 100);
+  table.string('email', 100);
   table.timestamps();
 })
 .then(function () {
@@ -21,3 +24,14 @@ db.schema.createTableIfNotExists('sessions', function (table) {
 .then(function () {
   console.log('sessions table is ready.');
 });
+
+// db.schema.createTableIfNotExists('questionaire', function (table) {
+//   // store username and their answers
+//   table.increments('id').primary();
+//   table.integer('user_id');
+//   table.timestamps();
+// })
+// .then(function () {
+//   console.log('sessions table is ready.');
+// });
+
