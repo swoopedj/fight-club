@@ -26,6 +26,7 @@ Session.create = function (userId) {
     .then(function (result) {
       // Knex gives us an array of newly-created record ids.
       // Since we only created one record, we just return the first.
+      console.log("session create result", result)
       return result[0];
     });
 };
