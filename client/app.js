@@ -30,6 +30,12 @@ angular.module('myApp', [
           templateUrl: 'views/profile.html',
           controller: 'profileCtrl'
         })
+
+        .state('chat', {
+          url: '/chat',
+          templateUrl: 'views/chat.html',
+          controller: 'chatCtrl'
+        })
     // $httpProvider.interceptors.push('AttachTokens');
 })
 // .factory('AttachTokens', function ($window) {

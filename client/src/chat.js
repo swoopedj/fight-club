@@ -1,7 +1,7 @@
  'use strict';
   angular.module('myApp',['luegg.directives'])
 
-	  .controller("ChatController", ['$scope', function($scope){
+	  .controller("chatCtrl", ['$scope', function($scope){
 	  	
 	  	$scope.chatroom = {};
 	  	$scope.chatroom.chats = [];

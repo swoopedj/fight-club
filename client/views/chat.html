@@ -1,7 +1,7 @@
 <div id="chatroom">
 <center>
   <h1 class="chatroom-name"> You know what your problem is? </h1>
-  <div class="chat-container" ng-controller="ChatController as chatroom">
+  <div class="chat-container" ng-controller="chatCtrl as chatroom">
 
     <div class="chat-window" scroll-glue>
       <p class="pull-left" ng-repeat="chat in chatroom.chats">{{chat.user}}Username: {{chat.message}}</p>
