@@ -1,58 +1,25 @@
  'use strict';
-  angular.module('myApp',['luegg.directives'])
+  angular.module('myApp')
 
-	  .controller("chatCtrl", ['$scope', function($scope){
+	  .controller("chatCtrl", ['$scope', '$rootScope', function($scope, $rootScope){
 	  	
 	  	$scope.chatroom = {};
 	  	$scope.chatroom.chats = [];
 
-	  	// $scope.setUsername = function(){
-	  	// 	var sessionId = $cookies.get('myCookie')
-	  	// 	console.log('sessionId!!!! : ', sessionId)
-	  	// 	var username = //need to create route to Session.find(sessionId)
-	  	// 	$scope.chat.user = username;
+	  	//$scope.chatroom.user = $rootScope.user.username;
+	  	//$rootScope.user is undefined
 
-	  	// };
+	  	//console.log('USERNAME:', $scope.chatroom.user)
 
 	  	$scope.chatroom.postChat = function(message){
+	  		console.log('USERNAME:', $scope.chatroom.user)
+
 	  		$scope.chatroom.chats.push({message: message});
 	  		console.log('message:', message)
-	  		var head = $scope.chatroom.chats[$scope.chats.length-1]
-	  		chatroom.message = "";
+	  		$scope.chatroom.message = "";
 	  	};
 }]);
 
 
 
 
-// angular.module('slandr-chat',['luegg.directives'])
-
-// 	  .controller("ChatController",["$rootScope",
-// 	  						        "$scope",
-// 	  						         "$http",
-// 	  						         "$location"],
-// 	  function($rootScope, $scope, $http, $location){
-// 	  	$scope.chatroom = {};
-// 	  	$scope.chatroom.chats = chatLog;
-// 	  	$scope.chat = {};
-
-// 	  	$scope.setUsername = function(){
-// 	  		var sessionId = $cookies.get('myCookie')
-// 	  		console.log('sessionId!!!! : ', sessionId)
-// 	  		var username = //need to create route to Session.find(sessionId)
-// 	  		$scope.chat.user = username;
-
-// 	  	};
-
-// 	  	$scope.postChat = function(message){
-// 	  		$scope.chat.message = message;
-// 	  		chatLog.push({message: message});
-// 	  		console.log('message:', message)
-// 	  		var head = chatLog[$rootScope.chatLog.length-1]
-// 	  		$scope.chat.message = "";
-// 	  	};
-
-// 	  });
-
-
-// var chatLog =[];
