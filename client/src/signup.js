@@ -23,7 +23,7 @@ angular.module('myApp')
   	$rootScope.randoMessage;
 // functions
   	$scope.signup = function(){
-      // $rootScope.user.username = $scope.user.username;
+      $cookies.put('myUsername', $scope.user.username)
 	    Auth.signup($scope.user)
 	      .then(function (token) {
           console.log("tok it", token)
