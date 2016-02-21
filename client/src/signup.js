@@ -23,13 +23,13 @@ angular.module('myApp')
   	$rootScope.randoMessage;
 // functions
   	$scope.signup = function(){
-      $cookies.put('myUsername', $scope.user.username)
 	    Auth.signup($scope.user)
 	      .then(function (token) {
           console.log("tok it", token)
           Auth.signin($scope.user)
             .then(function(res){
               $cookies.put('myCookie', res)
+              $cookies.put('myUsername', $scope.user.username)
             })
             .then(function(){
               $location.path('/questionaire');
@@ -44,6 +44,7 @@ angular.module('myApp')
       .then(function(res){
         console.log("res", res)
         $cookies.put('myCookie', res)
+        $cookies.put('myUsername', $scope.user.username)
         $location.path('/profile')
       })
       .catch(function(err){

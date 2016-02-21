@@ -5,6 +5,7 @@ var Promise = require('bluebird');
 var User = module.exports;
 
 User.findByUsername = function (username) {
+  console.log("===== findByUsername in user.js====")
   return db('users').select('*').where({ username: username }).limit(1)
     .then(function(rows) {
       console.log("findByUsername rows", rows)
@@ -13,15 +14,18 @@ User.findByUsername = function (username) {
     });
 };
 
-User.signIn = function (attrs) {
-  User.findByUsername(attrs.username)
-  .then(function(pw){
-    return (attrs.password === pw.password);
-  })
-  .catch(function(err) {
-    console.log(err)
-  });
-}
+// >>>>>> this function not called during sign in process?
+// User.signIn = function (attrs) {
+//   console.log("===== signin in user.js====")
+//   User.findByUsername(attrs.username)
+//   .then(function(pw){
+//     return (attrs.password === pw.password);
+//   })
+//   .catch(function(err) {
+//     console.log(err)
+//   });
+// }
+
 
 User.create = function (attrs) {
   console.log('test=====================')

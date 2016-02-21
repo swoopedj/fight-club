@@ -16,6 +16,7 @@ module.exports = {
     //
     // var correctPassword = db('users').select('password').where({username: attrs.username});
     // db.comparePassword(hash, correctPassword);
+    console.log("===== signin in userController====")
     var username = req.body.username;
     var password = req.body.password;
     db.findByUsername(username)
@@ -46,6 +47,7 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
+    console.log("===== signup in userController====")
     var attrs = {username: req.body.username,
         password: req.body.password, firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email};
     db.create(attrs)
@@ -70,6 +72,7 @@ module.exports = {
 };
 
 var hashPassword = function(password) {
+  console.log("===== hashPassword in userController====")
   return new Promise(function (resolve, reject) {
     bcrypt.hash(password, null, null, function (err, hashResult) {
       if (err) reject(err);

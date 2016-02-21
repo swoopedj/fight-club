@@ -1,58 +1,47 @@
 angular.module('myApp.services', [])
 
-.factory('Links', function ($http) {
+.factory('Chat', function ($http) {
   // Your code here
-  var getLinks = function(){
-    return $http({
-      method: 'GET',
-      url: '/api/links'
-    })
-    .then(function(resp){
-      return resp.data;
-    })
-  }
+  var postChat = function (chat){
+   console.log('posted chat to log')
+   return $http({
+     method: 'POST',
+     url: 'api/chatlog/postToLog',
+     data: chat
+   })
+   .then(function(res){
+      return res;
+   })
+   .catch(function(err){
+     console.log('post error:', err)
+   })
+ };
 
-  var addLink = function(link) {
-    return $http({
-      method: 'POST',
-      url: '/api/links',
-      data: link
-    })
-    .then(function(resp) {
-      console.log("reached addLink", resp)
-      return resp.data;
-    })
-    .catch(function(err){
-      return err;
-    })
-  }
-
-  var visits = function(code){
-    return $http({
-      method: 'GET',
-      url: code
-    })
-    .then(function(result){
-      console.log("visits result", result)
-      return result.data;
-    })
-    .catch(function(err){
-      console.log(err)
-    })
-  }
+ var fetchChatLog = function(){
+  console.log('chat log fetched')
+  return $http({
+    method: 'GET',
+    url: 'api/chatlog/fetchChatLog',
+  })
+  .then(function(res){
+    return res;
+  })
+  .catch(function(err){
+    console.log('fetch chat error:', err)
+  })
+ };
 
   return {
-    getLinks: getLinks,
-    addLink: addLink
-  }
+    postChat: postChat,
+    fetchChatLog: fetchChatLog
+  };
+
 })
+
 .factory('Test', function ($http) {
 	var searchUser = function(x){
 		return x.username;
 	}
-
-
-
 	return {
 		searchUser: searchUser
 	}

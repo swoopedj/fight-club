@@ -35,3 +35,13 @@ db.schema.createTableIfNotExists('sessions', function (table) {
 //   console.log('sessions table is ready.');
 // });
 
+db.schema.createTableIfNotExists('chatlog', function (table) {
+  table.increments('id').primary();
+  table.string('username', 100);
+  table.string('room'), 100;
+  table.string('message', 1000);
+  table.timestamps();
+})
+.then(function () {
+  console.log('chatlog table is ready.');
+});
