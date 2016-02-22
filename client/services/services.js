@@ -6,7 +6,7 @@ angular.module('myApp.services', [])
    console.log('posted chat to log')
    return $http({
      method: 'POST',
-     url: 'api/chatlog/postToLog',
+     url: 'api/users/postToLog',
      data: chat
    })
    .then(function(res){
@@ -21,7 +21,7 @@ angular.module('myApp.services', [])
   console.log('chat log fetched')
   return $http({
     method: 'GET',
-    url: 'api/chatlog/fetchChatLog',
+    url: 'api/users/fetchChatLog',
   })
   .then(function(res){
     return res;
