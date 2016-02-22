@@ -1,7 +1,9 @@
 angular.module('myApp')
   .controller('signupCtrl', ['$cookies','$rootScope','$scope','$http', '$location', 'Auth',function($cookies,$rootScope,$scope,$http,$location,Auth) {
   	$scope.user = {};
-    $rootScope.user = {};
+    $rootScope.userGlobal = {};
+    $rootScope.checkResult = false;
+    // $scope.password2;
   	$rootScope.messages = [
       "The supreme art of war is to subdue the enemy without fighting",
       "70% of statistics don't need sources",
@@ -23,15 +25,13 @@ angular.module('myApp')
   	$rootScope.randoMessage;
 // functions
   	$scope.signup = function(){
-      $cookies.put('myUsername', $scope.user.username)
 	    Auth.signup($scope.user)
 	      .then(function (token) {
           console.log("tok it", token)
           Auth.signin($scope.user)
             .then(function(res){
               $cookies.put('myCookie', res)
-            })
-            .then(function(){
+              $cookies.put('myUsername', $scope.user.username)
               $location.path('/questionaire');
             })
 	      })
@@ -40,14 +40,15 @@ angular.module('myApp')
 	      });
   	}
   $rootScope.signin = function(){
-    Auth.signin($rootScope.user)
+    Auth.signin($rootScope.userGlobal)
       .then(function(res){
-        console.log("res", res)
         $cookies.put('myCookie', res)
+        $cookies.put('myUsername', $rootScope.userGlobal.username)
         $location.path('/profile')
       })
       .catch(function(err){
         console.log("err", err)
+        $rootScope.userGlobal.wrong = "Username or password is wrong!"
       })
   }
   $rootScope.checkLogin = function(){
@@ -57,10 +58,22 @@ angular.module('myApp')
       return false;
     }
   }
+  $scope.checkUsername = function(arg){
+    Auth.getInfoByUsername(arg)
+      .then(function(res){
+        console.log('success')
+        $rootScope.checkResult = true;
+      })
+      .catch(function(err){
+        console.log('error')
+        $rootScope.checkResult = false;
+      })
+  }
 	$rootScope.random = function(){
 		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
 		$rootScope.randoMessage = $rootScope.messages[rando];
 	}
 	$rootScope.random();
   $rootScope.checkLogin();
+  $scope.checkUsername($scope.user.username);
   }]);

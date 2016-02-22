@@ -59,12 +59,43 @@ module.exports = {
       })
   },
 
-  checkAuth: function (req, res, next) {
-    // checking to see if the user is authenticated
-    // grab the token in the header is any
-    // then decode the token, which we end up being the user object
-    // check to see if that user exists in the database
+  questionaire: function (req, res, next) {
+    // store questionaire into DB
+    // req.body will be the object: {answers, userInfo}
+    db.questionaire(req.body)
+      .then(function(arg){
+        console.log("questionaire arg", arg)
+        res.json(arg)
+      })
+      .catch(function(err){
+        console.log("crap questionaire", err)
+        res.status(404).send(err.message)
+      })
+  },
 
+  getInfo: function(req, res, next) {
+    // req.body will be the username
+    // get the user's row from user table
+    // then with user id get answers/info
+    // last, wrap it and res.json dat b
+    db.findByUsername(req.body)
+      .then(function(arg){
+        return db.findProfileByUserId(arg.id)
+          .then(function(row){
+            return row;
+          })
+          .then(function(ro){
+            console.log(ro)
+            res.json({user: arg, profile: ro})
+          })
+          .catch(function(err){
+            console.log("getInfo error", err)
+            res.status(404).send(err.message)
+          })
+      })
+      .catch(function(err){
+        console.log("getInfo err", err)
+      })
   }
 
 };

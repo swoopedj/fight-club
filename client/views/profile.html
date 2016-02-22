@@ -19,12 +19,17 @@ user achievements
 <div class="animated fadeIn userInfo">
 	<img src="http://3.bp.blogspot.com/-6M50BF8VIAY/TuMUXF16GtI/AAAAAAAABRU/lhTcmX8UwkM/s1600/martin-schoeller-barack-obama-portrait-up-close-and-personal.jpg" height="300" width="250" /> 
 
-  	<h1>{{ profile.name }}</h1>
+  	<h1>{{ profile.username }}</h1>
+  	<h3>{{ profile.firstname }}</h3>
+  	<h3>{{ profile.lastname }}</h3>
+  	<h3>{{ profile.email }}</h3>
 </div>
 
-<div class="animated fadeInUp userDescription">
-	<h3>Description</h3>
-Unlike picture books for younger readers, a chapter book tells the story primarily through prose, rather than pictures. Unlike books for older readers, chapter books contain plentiful illustrations. The name refers to the fact that the stories are usually divided into short chapters, which provide children with opportunities to stop and resume reading if their attention spans are not long enough to finish the book in one sitting. Chapter books are usually works of fiction of moderate length and complexity.Unlike picture books for younger readers, a chapter book tells the story primarily through prose, rather than pictures. Unlike books for older readers, chapter books contain plentiful illustrations. The name refers to the fact that the stories are usually divided into short chapters, which provide children with opportunities to stop and resume reading if their attention spans are not long enough to finish the book in one sitting. Chapter books are usually works of fiction of moderate length and complexity.
+<div class="animated fadeIn userDescription">
+	<h3>Bio</h3>
+	{{ profile.bio }}
+	<h3>Answers</h3>
+	{{ profile.answers }}
 </div>
 </div>
 

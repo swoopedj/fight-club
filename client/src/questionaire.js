@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('myApp')
-  .controller('questionCtrl', ['$cookies', '$location','$rootScope','$scope','$http', function($cookies,$location,$rootScope,$scope,$http) {
+  .controller('questionCtrl', ['Auth','$cookies', '$location','$rootScope','$scope','$http', function(Auth, $cookies,$location,$rootScope,$scope,$http) {
     $scope.questions = {};
+    $scope.userInfo = {};
   	$rootScope.messages = [
       "The supreme art of war is to subdue the enemy without fighting",
       "70% of statistics don't need sources",
@@ -11,7 +12,7 @@ angular.module('myApp')
       "Rule #3: Please refer back to rule 1",
       "Freedom is hammered out on the anvil of discussion, dissent, and debate",
       "Sometimes by losing a battle you find a new way to win the war",
-      "The opposite of a correct statement is a false statement. But the opposite of a profound truth may well be another profound truth",
+      "Time spent arguing is, oddly enough, almost never wasted.",
       "For good ideas and true innovation, you need human interaction, conflict, argument, debate",
       "Deliberation and debate is the way you stir the soul of our democracy",
       "Debate and divergence of views can only enrich our history and culture",
@@ -24,20 +25,34 @@ angular.module('myApp')
   	$rootScope.randoMessage;
 // functions
 	$scope.finished = function(){
-    // answers are true if checked
-    console.log("questionaire", $scope.questions)
+    // combine questions and userInfo to one Object
+  var questionaire = {answers: $scope.questions, userInfo: $scope.userInfo};
+    Auth.reQuestionaire(questionaire)
+      .then(function(resp){
+        console.log("questionaire resp", resp)
+        $location.path('/profile');
+      })
+      .catch(function(err){
+        console.log("well shit...", err)
+      })
 	}
 	$rootScope.random = function(){
 		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
 		$rootScope.randoMessage = $rootScope.messages[rando];
 	}
   $rootScope.checkLogin = function(){
-    console.log("questionaire checkLogin", $cookies.get('myCookie'))
+    // console.log("questionaire checkLogin", $cookies.get('myCookie'))
     if($cookies.get('myCookie')){
+      $scope.userInfo.username = $cookies.get("myUsername");
       return false;
     }else{
       $location.path('/')
     }
+  }
+  $rootScope.signout = function(){
+    $cookies.remove('myCookie')
+    $cookies.remove('myUsername')
+    $location.path('/')
   }
 	$rootScope.random();
   $rootScope.checkLogin();
