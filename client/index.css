@@ -13,11 +13,11 @@ body{
 }
 #questionaireForm label{
   font-size: 25px;
-  word-spacing: 15px;
-  letter-spacing: 4px;
+  /*word-spacing: 15px;*/
+  /*letter-spacing: 4px;*/
   margin-top: 25px;
   margin-bottom: 25px;
-  font-family: MoonFlower;
+  /*font-family: MoonFlower;*/
 }
 .questInput{
   float: right;
@@ -50,7 +50,7 @@ body{
 #questionaireForm h1{
   text-align: center;
   font-family: OrangeJuice;
-  font-size: 70px;
+  font-size: 80px;
 }
 .jumbotron{
   background-color: #dcdcdc;
@@ -87,16 +87,34 @@ body{
 }
 #signupLeft{
   margin-left: 8%;
+  margin-top: 10%;
   font-size: 25px;
   float: left;
   width: 45%;
-  margin-top: 10%;
+}
+textarea{
+  font-family: MoonFlower;
+  font-size: 25px;
+  letter-spacing: 2px;
+  word-spacing: 5px;
+}
+.signupLeftText:hover{
+  border-radius: 10px;
+  background-color: grey;
+}
+.signupLeftText{
+  border-radius: 10px;
+  background-color: white;
+}
+#signupLeft span:hover{
+  border-radius: 10px;
 }
 #signupLeft span{
   padding: 10px 10px;
 }
 #signupLeft h1{
   color: #820000;
+  margin-bottom: 20px;
 }
 #signupLeftCont{
   text-align: left;
