@@ -25,15 +25,18 @@ db.schema.createTableIfNotExists('sessions', function (table) {
   console.log('sessions table is ready.');
 });
 
-// db.schema.createTableIfNotExists('questionaire', function (table) {
-//   // store username and their answers
-//   table.increments('id').primary();
-//   table.integer('user_id');
-//   table.timestamps();
-// })
-// .then(function () {
-//   console.log('sessions table is ready.');
-// });
+db.schema.createTableIfNotExists('questionaire', function (table) {
+  // answers will an object of mutliple key:true, no key:false
+  // user_bio will be a string of <= 125 characters
+  table.increments('id').primary();
+  table.integer('user_id');
+  table.string('answers');
+  table.string('user_bio', 125);
+  table.timestamps();
+})
+.then(function () {
+  console.log('questionaire table is ready.');
+});
 
 db.schema.createTableIfNotExists('chatlog', function (table) {
   table.increments('id').primary();

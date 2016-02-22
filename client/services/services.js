@@ -46,6 +46,7 @@ angular.module('myApp.services', [])
 		searchUser: searchUser
 	}
 })
+
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
@@ -55,7 +56,7 @@ angular.module('myApp.services', [])
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signin = function (user) {
-    console.log("signed in user: ", user)
+    // console.log("signed in user: ", user)
     return $http({
       method: 'POST',
       url: '/api/users/signin',
@@ -66,7 +67,7 @@ angular.module('myApp.services', [])
       return resp.data.session;
     })
     .catch(function(err){
-      console.log("signin error", err)
+      // console.log("signin error", err)
       throw new Error(err.data)
     })
   };
@@ -78,23 +79,49 @@ angular.module('myApp.services', [])
       data: user
     })
     .then(function (resp) {
-      console.log("reached signup resp", resp)
+      // console.log("reached signup resp", resp)
       return resp.data;
     })
     .catch(function(err){
-      console.log("servies signup error", err)
+      // console.log("servies signup error", err)
       throw new Error(err.data)
     })
   };
 
-  var isAuth = function () {
-    // this is where I will check for session token
-    return true;
+// request questionaire info
+  var reQuestionaire = function(answers){
+    return $http({
+      method: 'POST',
+      url: '/api/users/questionaire',
+      data: answers
+    })
+    .then(function(resp){
+      return resp.data;
+    })
+    .catch(function(err){
+      throw new Error(err.data)
+    })
   };
+
+  var getInfoByUsername = function(username){
+    return $http({
+      method: 'GET',
+      url: '/api/users/info',
+      data: username
+    })
+    .then(function(resp){
+      console.log("resp", resp)
+      return resp.data;
+    })
+    .catch(function(err){
+      throw new Error(err.data)
+    })
+  };  
 
   return {
     signin: signin,
     signup: signup,
-    isAuth: isAuth,
+    reQuestionaire: reQuestionaire,
+    getInfoByUsername: getInfoByUsername
   };
 });
