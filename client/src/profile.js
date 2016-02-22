@@ -4,11 +4,11 @@ angular.module('myApp')
   .controller('profileCtrl', ['$cookies','$rootScope','$scope','$http', '$location', 'Auth', function($cookies,$rootScope,$scope,$http,$location,Auth) {
     $scope.profile = {};
   	$rootScope.messages = [
-  		"The supreme art of war is to subdue the enemy without fighting",
-  		"70% of statistics don't need sources",
+  		"Accept the challenges so that you can feel the exhilaration of victory.",
+  		"We are going to have peace even if we have to fight for it.",
   		"Remember: If their opinion is different, it's wrong.",
   		"U WOT M8?!",
-  		"Rule #3: Please refer back to rule 1",
+  		"The great object is that every man be armed.",
   		"Freedom is hammered out on the anvil of discussion, dissent, and debate",
   		"Sometimes by losing a battle you find a new way to win the war",
   		"The opposite of a correct statement is a false statement. But the opposite of a profound truth may well be another profound truth",
@@ -18,8 +18,8 @@ angular.module('myApp')
   		"It is never smart, even in a strong democracy, to declare some debate off limits",
   		"You can choose to not let little things upset you",
   		"To be offended is a choice we make; it is not a condition inflicted or imposed upon us by someone or something else",
-  		"There is no such thing as an impartial jury because there are no impartial people. There are people that argue on the web for hours about who their favorite character on 'Friends' is",
-  		"Fear not those who argue but those who dodge"
+  		"Don't raise your voice, improve your argument.",
+  		"It is better to debate a question without settling it than to settle a question without debating it."
   	];
   	$rootScope.randoMessage;
     $scope.initialize = function(){
@@ -27,7 +27,7 @@ angular.module('myApp')
       // so findbyusername to get the user's id
       Auth.getInfoByUsername($cookies.get('myUsername'))
         .then(function(res){
-          console.log("res", res)
+          console.log("res", res.data)
         })
         .catch(function(err){
           console.log("err", err)
@@ -46,7 +46,7 @@ angular.module('myApp')
       // check if they are logged in, if not redirect to main page
       if($cookies.get('myCookie')){
         $scope.profile.username = $cookies.get('myUsername');
-        return false;
+        $rootScope.checkResult = false;
       }else{
         $location.path('/')
       }

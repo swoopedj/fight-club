@@ -1,4 +1,4 @@
-<div id='signup'>
+<div class='animated fadeIn signup'>
 
 <div id="signupLeft">
 	<h1>Argue with anyone around the world!</h1>
@@ -14,7 +14,7 @@
 	</div>
 </div>
 
-<div class="signupDiv">
+<div class="animated fadeIn signupDiv">
 
   <h1>You are not prepared {{ user.username }}</h1>
   <form id="signupForm" ng-model="user.username" name="signupForm" ng-submit='signup()'>
@@ -22,17 +22,17 @@
   	<input required class="fullName" type='text' ng-model='user.lastname' placeholder="Last Name">
   	<br>
   	<input required name="userEmail" class="fullInfo" style="width:250px;" type='email' ng-model='user.email' placeholder="Email@address.com">
-    <em ng-show="signupForm.userEmail.$error && signupForm.userEmail.$dirty" style="color:red;">Invalid Email</em>
+    <em class="signupError" ng-show="signupForm.userEmail.$invalid && signupForm.userEmail.$dirty" style="color:red;">Invalid Email</em>
   	<br>
-    <input required class="fullInfo" style="width:250px;" name="userUsername" id="signupUsername" type='text' ng-model='user.username' placeholder="Username">
-    <em style="color:red;" ng-show="checkUsername && signupForm.userUsername.$dirty">Username is taken!</em>
+    <input required class="fullInfo" maxlength="24" style="width:250px;" name="userUsername" id="signupUsername" type='text' ng-model='user.username' placeholder="Username">
+    <!-- <em class="signupError"style="color:red;" >Username is taken!</em> -->
     <br>
     <input required class="fullInfo" minlength="7" style="width:250px;" name="pw1" type="password" ng-model='user.password' placeholder="Password">
-    <em style="color:red;">Must be atleast 7 characters long</em>
-    <!-- <input name="pw2" type="password" ng-model='user.password2' placeholder="Confirm Password"> -->
+    <em class="signupError" ng-hide="user.password.length >= 7" ng-if="signupForm.pw1.$dirty" style="color:red;">Must be atleast 7 characters long</em>
+    <!-- <input name="pw2" type="password" ng-model='password2' placeholder="Confirm Password"> -->
     <br>
     <button id="signupSubmit">Sign up</button>
-    <em style="color:red;font-size:10px;">All fields required</em>
+    <em class="signupError" ng-hide="signupForm.$valid" style="color:red;">All fields must be filled and valid</em>
   </form>
 
 </div>

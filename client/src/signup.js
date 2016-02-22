@@ -1,7 +1,9 @@
 angular.module('myApp')
   .controller('signupCtrl', ['$cookies','$rootScope','$scope','$http', '$location', 'Auth',function($cookies,$rootScope,$scope,$http,$location,Auth) {
   	$scope.user = {};
-    $rootScope.user = {};
+    $rootScope.userGlobal = {};
+    $rootScope.checkResult = false;
+    // $scope.password2;
   	$rootScope.messages = [
       "The supreme art of war is to subdue the enemy without fighting",
       "70% of statistics don't need sources",
@@ -38,15 +40,15 @@ angular.module('myApp')
 	      });
   	}
   $rootScope.signin = function(){
-    Auth.signin($rootScope.user)
+    Auth.signin($rootScope.userGlobal)
       .then(function(res){
         $cookies.put('myCookie', res)
-        $cookies.put('myUsername', $rootScope.user.username)
+        $cookies.put('myUsername', $rootScope.userGlobal.username)
         $location.path('/profile')
       })
       .catch(function(err){
         console.log("err", err)
-        $rootScope.user.wrong = "Username or password is wrong!"
+        $rootScope.userGlobal.wrong = "Username or password is wrong!"
       })
   }
   $rootScope.checkLogin = function(){
@@ -56,14 +58,15 @@ angular.module('myApp')
       return false;
     }
   }
-  $scope.checkUsername = function(){
-    console.log("asdf")
-    Auth.getInfoByUsername($scope.user.username)
+  $scope.checkUsername = function(arg){
+    Auth.getInfoByUsername(arg)
       .then(function(res){
-        return true;
+        console.log('success')
+        $rootScope.checkResult = true;
       })
       .catch(function(err){
-        return false;
+        console.log('error')
+        $rootScope.checkResult = false;
       })
   }
 	$rootScope.random = function(){
@@ -72,4 +75,5 @@ angular.module('myApp')
 	}
 	$rootScope.random();
   $rootScope.checkLogin();
+  $scope.checkUsername($scope.user.username);
   }]);

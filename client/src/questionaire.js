@@ -12,7 +12,7 @@ angular.module('myApp')
       "Rule #3: Please refer back to rule 1",
       "Freedom is hammered out on the anvil of discussion, dissent, and debate",
       "Sometimes by losing a battle you find a new way to win the war",
-      "The opposite of a correct statement is a false statement. But the opposite of a profound truth may well be another profound truth",
+      "Time spent arguing is, oddly enough, almost never wasted.",
       "For good ideas and true innovation, you need human interaction, conflict, argument, debate",
       "Deliberation and debate is the way you stir the soul of our democracy",
       "Debate and divergence of views can only enrich our history and culture",

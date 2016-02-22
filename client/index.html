@@ -19,7 +19,7 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="animated fadeIn navbar-brand" href="#" ng-click="random()">
+      <a class="animated bounceInDown navbar-brand" href="#" ng-click="random()">
         <img height="50" width="50" alt="Brand" src="/images/doom-skull.gif">
       </a>
     </div>
@@ -36,19 +36,19 @@
 
 </ul>
 
-     <ul class="nav navbar-nav navbar-right">
+     <ul class="animated fadeIn nav navbar-nav navbar-right">
 
       <li>
       <!-- <button type="button" class="mainUser" class="btn btn-default" ng-click="goToSignin()">Sign in</button>  -->
-      <form id="signinHeader" ng-if="checkLogin" ng-submit="signin()">
-        <input type="text" ng-model="user.username" placeholder="Username"/>
-        <input type="password" ng-model="user.password" placeholder="Password"/>
-        <button>Sign In</button>
+      <form id="signinHeader" ng-show="checkResult" ng-submit="signin()">
+        <input type="text" ng-model="userGlobal.username" placeholder="Username"/>
+        <input type="password" ng-model="userGlobal.password" placeholder="Password"/>
+        <button class="headerButton">Sign In</button>
         <br>
-        <b style="color:red;">{{ user.wrong }}</b>
+        <em class="signupError">{{ userGlobal.wrong }}</em>
         <!-- <input type="checkbox">Save Info?</input> -->
       </form>
-      <button ng-if="!checkLogin" ng-click="signout()">Sign Out</button>
+      <button class="headerButton" style="margin-top:20px;background-color:#00D300;" ng-hide="checkResult" ng-click="signout()">Sign Out</button>
     </li>
 
      </ul>
