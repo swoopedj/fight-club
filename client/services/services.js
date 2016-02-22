@@ -10,7 +10,7 @@ angular.module('myApp.services', [])
      data: chat
    })
    .then(function(res){
-      return res;
+      return res.body;
    })
    .catch(function(err){
      console.log('post error:', err)
@@ -24,7 +24,7 @@ angular.module('myApp.services', [])
     url: 'api/users/fetchChatLog',
   })
   .then(function(res){
-    return res;
+    return res.body;
   })
   .catch(function(err){
     console.log('fetch chat error:', err)

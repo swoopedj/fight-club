@@ -5,7 +5,7 @@
   <div class="chat-container" ng-controller="chatCtrl as chatroom">
 
     <div class="chat-window" scroll-glue>
-      <p class="chat-message pull-left" ng-repeat="chat in chatroom.chats">{{chat.username}}: {{chat.message}}</p>
+      <p class="chat-message pull-left" ng-repeat="chat in chatroom.chats"><b class="chat-user">{{chat.username}}:</b> {{chat.message}}</p>
     </div>
     <br>
     <div class="chat-form">

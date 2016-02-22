@@ -13,26 +13,32 @@
 
 	  	$scope.chatroom.postChat = function(message){
 	  		var chat = {
-	  			username: $cookies.get('myUsername'),
+	  			username: name,
 	  			room: room,
 	  			message: message
 	  		}
 	  		Chat.postChat(chat)
 	  		$scope.chatroom.chats.push({
-	  			username: $cookies.get('myUsername'),
+	  			username: name,
 	  			message: message
 	  		});
-	  		console.log('message:', message)
+	  		$scope.chatroom.fetchChats(room);
 	  		$scope.chatroom.message = "";
 	  	};
 
 	  	$scope.chatroom.fetchChats = function(room){
 	  		Chat.fetchChatLog(room)
-	  		//query database for chats posts (maybe with timestamp
-	  		// later than last post in chats array?)
-	  		// push new chat posts into chat array
+	  		.then(function(chatobj){
+	  			console.log('chatobj retrieved=====', chatobj)
+	  		})
+	  		.catch(function(err){
+	  			console.log('Error in fetch =====', err)
+	  		})
 
-	  		//needs connection to fetchChats() in chatlog.js
+	  		//in then => if chatobj with that id and not the username from the cookie 
+	  		//does not exist in array , push to array
+	  		//post to db instead of array?
+
 	  	};
 
 	  	// setInetrval(function(){

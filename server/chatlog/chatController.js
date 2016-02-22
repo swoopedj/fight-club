@@ -9,8 +9,8 @@ var User = require('./userModel.js'),
     module.exports = {
 
     	fetchChatLog: function(req, res, next){
-    		console.log('made it to chatController, req ======', req.body)
-    		return db.fetchChats()
+    		// console.log('made it to chatController, req ======', req.body)
+    		return db.fetchChats(req.body.room)
     		.then(function(chats){
     			console.log('res in fetchChatlog ======', res.body)
     		})
@@ -23,7 +23,7 @@ var User = require('./userModel.js'),
 
     	postToLog: function(req, res, next){
 
-    		console.log('made it to chatController, req ======', req.body)
+    		// console.log('made it to chatController, req ======', req.body)
     		var username = req.body.username;
     		var room = req.body.room;
     		var message = req.body.message

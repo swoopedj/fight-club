@@ -188,6 +188,9 @@ body{
   margin-top: 175px;
 
 }
+.chat-user {
+  font-size: 1.5em;
+}
 
 .chat-window{
   background-color: white;

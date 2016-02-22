@@ -5,6 +5,7 @@ var Chatlog = module.exports;
 
 //
 Chatlog.fetchChats = function(room){
+	console.log('room========================', room)
 	return db('chatlog').select('*').where({chatroom: room})
 	  .then(function(posts){
 	  	console.log('========New Posts:', posts)
@@ -19,7 +20,7 @@ Chatlog.fetchChats = function(room){
 };
 
 Chatlog.postChat = function(username, room, message){
-	return db('chatlog').insert({username: username, room: room, mesage: message})
+	return db('chatlog').insert({username: username, room: room, message: message})
 	.then(function(){
 		console.log('chatPost in table chatlog');
 	})
