@@ -40,14 +40,15 @@
 
       <li>
       <!-- <button type="button" class="mainUser" class="btn btn-default" ng-click="goToSignin()">Sign in</button>  -->
-      <form id="signinHeader" ng-show="checkLogin" ng-submit="signin()">
+      <form id="signinHeader" ng-if="checkLogin" ng-submit="signin()">
         <input type="text" ng-model="user.username" placeholder="Username"/>
         <input type="password" ng-model="user.password" placeholder="Password"/>
         <button>Sign In</button>
-        <!-- <br> -->
+        <br>
+        <b style="color:red;">{{ user.wrong }}</b>
         <!-- <input type="checkbox">Save Info?</input> -->
       </form>
-      <button ng-show="!checkLogin" ng-click="signout()">Sign Out</button>
+      <button ng-if="!checkLogin" ng-click="signout()">Sign Out</button>
     </li>
 
      </ul>

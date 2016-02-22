@@ -22,27 +22,37 @@ angular.module('myApp')
   		"Fear not those who argue but those who dodge"
   	];
   	$rootScope.randoMessage;
-	$rootScope.random = function(){
-		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
-		$rootScope.randoMessage = $rootScope.messages[rando];
-	}
-  $scope.userInfo = function(){
-
-  }
-  $rootScope.signout = function(){
-    $cookies.remove('myCookie')
-    $cookies.remove('myUsername')
-    $location.path('/')
-  }
-  $scope.checkLogin = function(){
-    // check if they are logged in, if not redirect to main page
-    if($cookies.get('myCookie')){
-      return false;
-    }else{
+    $scope.initialize = function(){
+      // find questionaire info by user_id
+      // so findbyusername to get the user's id
+      Auth.getInfoByUsername($cookies.get('myUsername'))
+        .then(function(res){
+          console.log("res", res)
+        })
+        .catch(function(err){
+          console.log("err", err)
+        })
+    }
+  	$rootScope.random = function(){
+  		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
+  		$rootScope.randoMessage = $rootScope.messages[rando];
+  	}
+    $rootScope.signout = function(){
+      $cookies.remove('myCookie')
+      $cookies.remove('myUsername')
       $location.path('/')
     }
-  }
-	$rootScope.random();
-  $scope.checkLogin();
+    $scope.checkLogin = function(){
+      // check if they are logged in, if not redirect to main page
+      if($cookies.get('myCookie')){
+        $scope.profile.username = $cookies.get('myUsername');
+        return false;
+      }else{
+        $location.path('/')
+      }
+    }
+  	$rootScope.random();
+    $scope.checkLogin();
+    $scope.initialize();
 // functions
   }]);

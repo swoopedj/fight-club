@@ -51,14 +51,29 @@ User.create = function (attrs) {
     });
 
 };
+User.questionaire = function(attrs){
+  // questionaire table has: user_id, answers, user_bio
+  // attrs is the object: {answers, userInfo}
+  var stringAnswers = JSON.stringify(attrs.answers);
+  return User.findByUsername(attrs.userInfo.username)
+    .then(function(user){
+      return db('questionaire').insert({user_id: user.id, answers: stringAnswers, user_bio: attrs.userInfo.bio});
+    })
+    .catch(function(err){
+      console.log("user.questionaire err", err)
+      throw err;
+    })
+};
 
-//User.comparePassword = comparePassword;
+User.findProfileByUserId = function(userId){
+  console.log("user find profile", userId)
+  return db('questionaire').select('*').where({user_id: userId}).limit(1)
+    .then(function(row){
+      console.log('user.find profile', row)
+      return row[0] || Promise.reject( new Error('no_such_user') )
+    })
+};
 
-
-//
-// These helpers each use a non-promise callback function,
-// but then wraps it in a new promise (and returns that promise).
-//
 User.hashPassword = function(password) {
   return new Promise(function (resolve, reject) {
     bcrypt.hash(password, null, null, function (err, hashResult) {

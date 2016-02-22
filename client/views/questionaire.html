@@ -1,39 +1,48 @@
 <div class='animated slideInUp questionaire'>
   <form id="questionaireForm" name="questionForm" ng-submit='finished()'>
-    <center><h1>Questionaire</h1></center>
+    <center><h1>Questionaire for {{ userInfo.username }}</h1></center>
+    <hr>
     <label><u>Controversial Questions</u></label>
     <label style="float:right;"><u>Yes/No</u></label>
     <br>
     <label>1. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer1'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer1'>
     <br>
     <label>2. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer2'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer2'>
     <br>
     <label>3. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer3'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer3'>
     <br>
     <label>4. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer4'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer4'>
     <br>
     <label>5. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer5'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer5'>
     <br>
     <label>6. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer6'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer6'>
     <br>
     <label>7. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer7'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer7'>
     <br>
     <label>8. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer8'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer8'>
     <br>
     <label>9. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer9'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer9'>
     <br>
     <label>10. are you okay hmmmm!? everything made sense two longer question?!</label>
-    <input type="checkbox" ng-model='questions.answer10'>
+    <input class="questInput" type="checkbox" ng-model='questions.answer10'>
+    <hr>
+    <label><u>{{ userInfo.username }} Bio</u></label>
     <br>
+    <label>Write a bio so everyone can laugh at you!</label>
+    <br>
+    <textarea required maxlength="125" placeholder="125 character limit" class="userBio" ng-model="userInfo.bio"></textarea>
+    <hr>
     <center><button>Submit</button></center>
   </form>
+
+
 </div>

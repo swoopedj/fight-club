@@ -18,17 +18,21 @@
 
   <h1>You are not prepared {{ user.username }}</h1>
   <form id="signupForm" ng-model="user.username" name="signupForm" ng-submit='signup()'>
-  	<input type='text' ng-model='user.firstname' placeholder="First Name">
-  	<input type='text' ng-model='user.lastname' placeholder="Last Name">
+  	<input required class="fullName" type='text' ng-model='user.firstname' placeholder="First Name">
+  	<input required class="fullName" type='text' ng-model='user.lastname' placeholder="Last Name">
   	<br>
-  	<input style="width:413px;" type='text' ng-model='user.email' placeholder="Email@address.com">
+  	<input required name="userEmail" class="fullInfo" style="width:250px;" type='email' ng-model='user.email' placeholder="Email@address.com">
+    <em ng-show="signupForm.userEmail.$error && signupForm.userEmail.$dirty" style="color:red;">Invalid Email</em>
   	<br>
-    <input style="width:413px;" id="signupUsername" type='text' ng-model='user.username' placeholder="Username">
+    <input required class="fullInfo" style="width:250px;" name="userUsername" id="signupUsername" type='text' ng-model='user.username' placeholder="Username">
+    <em style="color:red;" ng-show="checkUsername && signupForm.userUsername.$dirty">Username is taken!</em>
     <br>
-    <input style="width:413px;" name="pw1" type="password" ng-model='user.password' placeholder="Password">
+    <input required class="fullInfo" minlength="7" style="width:250px;" name="pw1" type="password" ng-model='user.password' placeholder="Password">
+    <em style="color:red;">Must be atleast 7 characters long</em>
     <!-- <input name="pw2" type="password" ng-model='user.password2' placeholder="Confirm Password"> -->
     <br>
-    <button style="margin-left:5px;">Sign up</button>
+    <button id="signupSubmit">Sign up</button>
+    <em style="color:red;font-size:10px;">All fields required</em>
   </form>
 
 </div>

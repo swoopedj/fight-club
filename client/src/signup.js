@@ -23,15 +23,13 @@ angular.module('myApp')
   	$rootScope.randoMessage;
 // functions
   	$scope.signup = function(){
-      $cookies.put('myUsername', $scope.user.username)
 	    Auth.signup($scope.user)
 	      .then(function (token) {
           console.log("tok it", token)
           Auth.signin($scope.user)
             .then(function(res){
               $cookies.put('myCookie', res)
-            })
-            .then(function(){
+              $cookies.put('myUsername', $scope.user.username)
               $location.path('/questionaire');
             })
 	      })
@@ -42,12 +40,13 @@ angular.module('myApp')
   $rootScope.signin = function(){
     Auth.signin($rootScope.user)
       .then(function(res){
-        console.log("res", res)
         $cookies.put('myCookie', res)
+        $cookies.put('myUsername', $rootScope.user.username)
         $location.path('/profile')
       })
       .catch(function(err){
         console.log("err", err)
+        $rootScope.user.wrong = "Username or password is wrong!"
       })
   }
   $rootScope.checkLogin = function(){
@@ -56,6 +55,16 @@ angular.module('myApp')
     }else{
       return false;
     }
+  }
+  $scope.checkUsername = function(){
+    console.log("asdf")
+    Auth.getInfoByUsername($scope.user.username)
+      .then(function(res){
+        return true;
+      })
+      .catch(function(err){
+        return false;
+      })
   }
 	$rootScope.random = function(){
 		var rando = Math.round(Math.random() * $rootScope.messages.length - 1)
