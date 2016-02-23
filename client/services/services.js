@@ -17,8 +17,10 @@ angular.module('myApp.services', [])
    })
  };
 
- var fetchChatLog = function(){
+ var fetchChatLog = function(room){
   console.log('chat log fetched')
+  // return $http.get('api/users/fetchChatLog',{params: {room: room}})
+
   return $http({
     method: 'GET',
     url: 'api/users/fetchChatLog',

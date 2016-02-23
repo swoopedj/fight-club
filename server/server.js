@@ -34,13 +34,27 @@ app.listen(4000, function(){
 var assetFolder = Path.resolve(__dirname, '../client/');
 routes.use(express.static(assetFolder));
 
+
+// routes.get('/views/chat.html', function(req, res){
+// 	var roomPath = req._parsedOriginalUrl.query
+// 	var room = roompath.slice(5)
+// 	console.log('ROUTED for CHAT =========room', room)
+// })
+
 routes.get('/*', function(req,res){
-  // if ( ! req.session ) {
-  //   return res.redirect(assetFolder + '/views/signin');
-  // }
-  // else {
+  if ( req._parsedOriginalUrl.pathname === "/api/users/fetchChatLog") {
+    
+    var roomPath = req._parsedOriginalUrl.query
+	var room = roomPath.slice(5)
+    console.log('========chat.path recognized======:', room)
+    res.sendFile( assetFolder + '/index.html')
+  }
+
+ //  	console.log('TEST=================== req:', req._parsedOriginalUrl.pathname);
+ //  	console.log('TEST=================== req:', req._parsedOriginalUrl.query);
+
   res.sendFile( assetFolder + '/index.html')
-// }
+
 })
 
 

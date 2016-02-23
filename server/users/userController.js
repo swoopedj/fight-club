@@ -8,14 +8,6 @@ var User = require('./userModel.js'),
 
 module.exports = {
   signin: function (req, res, next) {
-
-    // var attrs = {username: req.body.username,
-    //     password: req.body.password};
-    //
-    // var hash = hashPassword(attrs.password);
-    //
-    // var correctPassword = db('users').select('password').where({username: attrs.username});
-    // db.comparePassword(hash, correctPassword);
     var username = req.body.username;
     var password = req.body.password;
     db.findByUsername(username)
